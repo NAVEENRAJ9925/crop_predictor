@@ -1,0 +1,15 @@
+{
+  "name": "FastAPI ML App",
+  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+  "postCreateCommand": "pip install -r app/requirements.txt",
+  "forwardPorts": [8000],
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  }
+}
