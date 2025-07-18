@@ -1,15 +1,9 @@
 {
-  "name": "FastAPI ML App",
+  "name": "FastAPI + Docker DevContainer",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "image": "mcr.microsoft.com/devcontainers/python:3.10",
-  "postCreateCommand": "pip install -r app/requirements.txt",
   "forwardPorts": [8000],
-  "customizations": {
-    "vscode": {
-      "settings": {},
-      "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter"
-      ]
-    }
-  }
+  "postCreateCommand": "pip install -r app/requirements.txt"
 }
