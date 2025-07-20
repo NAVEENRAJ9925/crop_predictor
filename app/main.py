@@ -1,4 +1,5 @@
 # app/main.py
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 import numpy as np
@@ -6,9 +7,9 @@ import joblib
 
 app = FastAPI()
 
-model = joblib.load("app/random_forest_model.pkl")
-label_encoder = joblib.load("app/label_encoder.pkl")
-scaler = joblib.load("app/scaler.pkl")
+model = joblib.load(os.environ.get("MODEL_PATH"))
+scaler = joblib.load(os.environ.get("SCALER_PATH"))
+label_encoder = joblib.load(os.environ.get("ENCODER_PATH"))
 
 class InputData(BaseModel):
     N: float
