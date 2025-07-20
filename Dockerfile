@@ -3,13 +3,10 @@ FROM python:3.10-slim
 WORKDIR /app
 
 COPY app /app/app
-COPY start.sh /app/start.sh
+COPY requirements.txt /app
 
 RUN pip install --upgrade pip
-RUN pip install -r /app/app/requirements.txt
+RUN pip install -r requirements.txt
 
-RUN chmod +x /app/start.sh
-
-EXPOSE 8000 8501
-
-ENTRYPOINT ["/app/start.sh"]
+EXPOSE 8501
+CMD ["streamlit", "run", "app/streamlit_ui.py", "--server.port=8501", "--server.enableCORS=false"]
