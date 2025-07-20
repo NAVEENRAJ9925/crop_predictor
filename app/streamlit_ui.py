@@ -1,4 +1,3 @@
-%%writefile app.py
 import streamlit as st
 import joblib
 import pandas as pd
@@ -36,6 +35,3 @@ if st.button("Predict Crop"):
     prediction = model.predict(scaled_input)[0]
     predicted_crop = label_encoder.inverse_transform([prediction])[0]
     st.success(f"✅ Recommended Crop: **{predicted_crop}**")
-
-give main.py
-
