@@ -27,3 +27,24 @@ def predict(data: InputData):
     prediction = model.predict(scaled_input)
     crop_name = label_encoder.inverse_transform(prediction)[0]
     return {"prediction": crop_name}
+from fastapi import Request
+from fastapi.responses import Response
+import httpx
+
+@app.get("/streamlit/{path:path}")
+async def proxy_streamlit(request: Request, path: str):
+    url = f"http://localhost:8501/{path}"
+    headers = dict(request.headers)
+    async with httpx.AsyncClient() as client:
+        response = await client.request(
+            request.method, url, headers=headers, content=await request.body()
+        )
+    return Response(
+        content=response.content,
+        status_code=response.status_code,
+        headers=dict(response.headers),
+    )
+
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is working!"}
