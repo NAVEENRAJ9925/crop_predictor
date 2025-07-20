@@ -6,7 +6,7 @@ COPY app /app/app
 COPY start.sh /app/start.sh
 
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r /app/app/requirements.txt
 
 RUN chmod +x /app/start.sh
 
