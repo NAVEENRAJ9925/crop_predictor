@@ -1,11 +1,12 @@
 import streamlit as st
 import joblib
 import pandas as pd
+import os
+BASE_DIR = os.path.dirname(__file__)  # gives path to /app/
 
-# Load model and encoder
-model = joblib.load("random_forest_model.pkl")
-label_encoder = joblib.load("label_encoder.pkl")
-scaler = joblib.load("scaler.pkl")  # Load the scaler
+model = joblib.load(os.path.join(BASE_DIR, "random_forest_model.pkl"))
+label_encoder = joblib.load(os.path.join(BASE_DIR, "label_encoder.pkl"))
+scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
 
 st.set_page_config(page_title="Crop Predictor", layout="centered")
 
